@@ -1,6 +1,7 @@
 import string
+from cypher.base import BaseCypher
 
-class a1z26Cypher:
+class a1z26Cypher(BaseCypher):
     """
     a1z26Cypher - a simple cypher that translates letters to their numeric
                   equivalents.
@@ -9,11 +10,13 @@ class a1z26Cypher:
       separator (string): specify the character used in sepration of input and
                           output characters.
     """
-    separator = '-'
+    def __init__(self):
+      self.separator = '-'
 
     def encode(
+              self,
               in_str, 
-              sep = separator, 
+              sep = '', 
               keep_ws = True,
               use_ascii = False
               ):
@@ -29,15 +32,18 @@ class a1z26Cypher:
                                 punctuation)
 
         Returns:
-          string: the a1z26 encoded string
+          out_str (string): the a1z26 encoded string
 
         """
+        
+        if sep == '':
+          sep = self.separator
         out_list = []
-        out_string = ''
+        out_str = ''
         if use_ascii:
           for ch in in_str:
             out_list.append(str(ord(ch)))
-            out_string = sep.join(out_list)
+            out_str = sep.join(out_list)
         else:
           this_word = []
           for ch in in_str:
@@ -53,12 +59,13 @@ class a1z26Cypher:
               this_word.append(str(ch))
           if len(this_word) > 0:
             out_list.append(sep.join(this_word))
-          out_string = ' '.join(out_list)
-        return out_string
+          out_str = ' '.join(out_list)
+        return out_str
 
     def decode(
+              self,
               in_str, 
-              sep=separator,
+              sep='',
               use_ascii=False
               ):
         """ decodes a string using the a1z26 method.
@@ -67,22 +74,24 @@ class a1z26Cypher:
           in_str (string): a string to decode
 
         Returns:
-          string: the decoded string
+          out_str (string): the decoded string
           
         """
-        out_string = ''
+        if sep == '':
+          sep = self.separator
+        out_str = ''
         if use_ascii:
           for ch in in_str.split(sep): 
-            out_string += str(chr(int(ch)))
+            out_str += str(chr(int(ch)))
         else:
           for word in in_str.split(' '):
             for ch in word.split(sep):
               if ch.isspace():
-                out_string += str(ch)
+                out_str += str(ch)
               elif ch.isdigit:
-                out_string += str(string.ascii_lowercase[int(ch)-1])
+                out_str += str(string.ascii_lowercase[int(ch)-1])
               else:
-                out_string += str(ch)
-            out_string += ' '
-        return out_string.rstrip()
+                out_str += str(ch)
+            out_str += ' '
+        return out_str.rstrip()
 

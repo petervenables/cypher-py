@@ -1,12 +1,14 @@
 import string
-
-class AtbashCypher:
+from cypher.base import BaseCypher
+class AtbashCypher(BaseCypher):
     """
     AtbashCypher - a form of the affine cypher but with fixed registration
                    such that a = z, b = y, ... z = a
     """
+    def __init__(self):
+      pass
 
-    def encode(in_str):
+    def encode(self, in_str):
         """ encodes a string using the atbash cypher. 
         
         Arguments:
@@ -30,7 +32,7 @@ class AtbashCypher:
             out_str += str(ch)
         return out_str
 
-    def decode(in_str):
+    def decode(self, in_str):
         """ decodes a string using the atbash cypher.
         
         Arguments:

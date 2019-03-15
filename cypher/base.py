@@ -1,4 +1,4 @@
-class BaseCypher:
+class BaseCypher(object):
     """
     BaseCypher - a do-nothing class from which to base other cypher methods 
     """
