@@ -1,4 +1,5 @@
 import string
+from cypher.math import coprime, mult_mod_inv
 
 class AffineCypher:
     """
@@ -23,18 +24,18 @@ class AffineCypher:
           Creates:
           mmiv (int):       the multiplicative modular inverse of a and m
       """
-      self.a = a
-      self.b = b
-      self.m = m
+      for arg in a, b, m:
+        if type(arg) not in [int]:
+          raise ValueError("Key must be an integer")
+        elif arg < 0:
+          raise ValueError("Key must be a positive integer")
 
-      def mult_mod_inv(a=1, m=26):
-        """ mult_mod_inv finds the multiplicative modular inverse of the two 
-            numbers. Basically such that 1 = ax mod m and 0 <= x <= m
-        """
-        for x in range(0,m):
-          if ((a*x) % m) == 1:
-            # FIXME: if there is no valid mminv, we'll be returning nothing
-            return x
+      if not coprime(a,m):
+        raise ValueError("Primary key 'a' and alphabet size 'm' must be coprime.")
+      else:
+        self.a = a
+        self.b = b
+        self.m = m
 
       self.mminv = mult_mod_inv(self.a, self.m)
 
