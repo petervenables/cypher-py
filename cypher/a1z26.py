@@ -1,5 +1,5 @@
 import string
-from cypher.base import BaseCypher
+from base import BaseCypher
 
 class a1z26Cypher(BaseCypher):
     """

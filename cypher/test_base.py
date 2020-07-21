@@ -1,5 +1,5 @@
 import unittest
-from cypher.base import BaseCypher as bc
+from base import BaseCypher as bc
 
 class BaseCypherTests(unittest.TestCase):
 

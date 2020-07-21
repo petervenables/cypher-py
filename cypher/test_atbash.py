@@ -1,5 +1,5 @@
 import unittest
-from cypher.atbash import AtbashCypher as abc
+from atbash import AtbashCypher as abc
 
 class AtbashCypherTests(unittest.TestCase):
 

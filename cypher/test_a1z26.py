@@ -1,5 +1,5 @@
 import unittest
-from cypher.a1z26 import a1z26Cypher as ac
+from a1z26 import a1z26Cypher as ac
 
 class a1z26CypherTests(unittest.TestCase):
 

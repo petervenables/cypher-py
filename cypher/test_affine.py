@@ -1,5 +1,5 @@
 import unittest
-from cypher.affine import AffineCypher as ac
+from affine import AffineCypher as ac
 
 class AffineCypherTests(unittest.TestCase):
 

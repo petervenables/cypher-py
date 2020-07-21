@@ -1,5 +1,5 @@
 import string
-from cypher.math import coprime, mult_mod_inv
+from math import coprime, mult_mod_inv
 
 class AffineCypher:
     """

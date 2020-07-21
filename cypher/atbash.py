@@ -1,5 +1,5 @@
 import string
-from cypher.base import BaseCypher
+from base import BaseCypher
 class AtbashCypher(BaseCypher):
     """
     AtbashCypher - a form of the affine cypher but with fixed registration
